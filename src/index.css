@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Police-grade typography ===== */
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont;
+  }
+
+  h1 {
+    @apply text-2xl font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-xl font-semibold tracking-tight;
+  }
+
+  h3 {
+    @apply text-lg font-semibold;
+  }
+
+  p {
+    @apply text-sm leading-relaxed text-gray-300;
+  }
+}
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+/* ===== TN Police Watermark (FORCED VISIBLE) ===== */
+/* ===== TN Police Watermark (Production) ===== */
+.app-watermark {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.app-watermark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/tn-police-logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 380px;
+  opacity: 0.050;          /* subtle but visible */
+  filter: grayscale(100%);
+}
+
